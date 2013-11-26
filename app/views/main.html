@@ -1,0 +1,27 @@
+<div class="header">
+  <ul class="nav nav-pills pull-right">
+    <li class="active"><a ng-href="#">Home</a></li>
+    <li><a ng-href="#">About</a></li>
+    <li><a ng-href="#">Contact</a></li>
+  </ul>
+  <h3 class="text-muted">coding the prototype</h3>
+</div>
+<div ng-controller="PoemCtrl" >
+    <h1 class="title">{{ poem.title }}</h1>
+
+    <div ng-show="substituted">
+      <div class="body" ng-repeat="line in poem.body"> 
+        <p>{{line}}</p>
+      </div>
+    </div>
+
+    <div ng-hide="substituted">
+      <div class="body" ng-repeat="line in poem.body_altered()"> 
+        <p>{{line}}</p>
+      </div>
+    </div>
+
+    <p class="author">{{ poem.author }}</p>
+</div>
+
+<button ng-click="substituted = !substituted">Substitute</button>
