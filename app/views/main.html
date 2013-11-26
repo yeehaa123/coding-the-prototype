@@ -6,22 +6,4 @@
   </ul>
   <h3 class="text-muted">coding the prototype</h3>
 </div>
-<div ng-controller="PoemCtrl" >
-    <h1 class="title">{{ poem.title }}</h1>
-
-    <div ng-show="substituted">
-      <div class="body" ng-repeat="line in poem.body"> 
-        <p>{{line}}</p>
-      </div>
-    </div>
-
-    <div ng-hide="substituted">
-      <div class="body" ng-repeat="line in poem.body_altered()"> 
-        <p>{{line}}</p>
-      </div>
-    </div>
-
-    <p class="author">{{ poem.author }}</p>
-</div>
-
-<button ng-click="substituted = !substituted">Substitute</button>
+<poem></poem>

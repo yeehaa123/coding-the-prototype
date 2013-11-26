@@ -1,0 +1,20 @@
+<article class="poem">
+
+  <h1 class="title">{{ poem.title }}</h1>
+
+  <div ng-hide="substituted">
+    <div class="body" ng-repeat="line in poem.body"> 
+      <p>{{line}}</p>
+    </div>
+  </div>
+
+  <div ng-show="substituted">
+    <div class="body" ng-repeat="line in poem.body_altered()"> 
+      <p>{{line}}</p>
+    </div>
+  </div>
+
+  <p class="author">{{ poem.author }}</p>
+
+  <button ng-click="substituteVariables()">Substitute</button>
+</article>
