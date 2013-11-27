@@ -1,17 +1,13 @@
 'use strict'
 
-@app.directive 'poem', ['PoemService', (PoemService) ->
-
-  controller = ($scope) ->
-    $scope.poem = PoemService.getPoem(0)
-    
-    $scope.substituteVariables = ->
-      $scope.substituted = !$scope.substituted
+@app.directive 'poem', [ ->
 
   {
     replace: true
     restrict: 'E'
     templateUrl: './views/poem.html' 
-    controller: controller
+    controller: 'PoemCtrl'
+    scope: {}
   }
 ]
+

@@ -30,7 +30,7 @@
 
   alterPoem = (poem)->
     variables = poem.variables
-    body =_.map poem.body, (line) ->
+    body = _.map poem.body, (line) ->
       _.each variables, (value, key) ->
         re = new RegExp(key)
         line = line.replace re, value
