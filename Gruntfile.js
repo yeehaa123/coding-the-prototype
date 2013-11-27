@@ -26,7 +26,11 @@ module.exports = function (grunt) {
     },
 
     // Watches files for changes and runs tasks based on the changed files
-    watch: {
+    watch: { 
+      scripts: {
+        files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+        tasks: ['sass']
+      },
       coffee: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.{coffee,litcoffee,coffee.md}'],
         tasks: ['newer:coffee:dist']
@@ -129,7 +133,27 @@ module.exports = function (grunt) {
       }
     },
 
-    
+    sass: {
+      dist: {
+        options: {
+          includePaths: require('node-neat').includePaths,
+          outputStyle: 'compressed'
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.app %>/styles',
+          src: ['*.scss'],
+          dest: '.tmp/styles',
+          ext: '.css'
+        }]
+      },
+      server: {
+        options: {
+          debugInfo: true
+        }
+      }
+    }, 
+
     // Compiles CoffeeScript to JavaScript
     coffee: {
       options: {
@@ -375,6 +399,7 @@ module.exports = function (grunt) {
     'concat',
     'ngmin',
     'copy:dist',
+    'neat',
     'cdnify',
     'cssmin',
     'uglify',
@@ -385,6 +410,6 @@ module.exports = function (grunt) {
   grunt.registerTask('default', [
     'newer:jshint',
     'test',
-    'build'
+    'build',
   ]);
 };
