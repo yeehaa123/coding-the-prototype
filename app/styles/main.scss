@@ -1,7 +1,21 @@
 @import "bourbon";
 @import "neat";
-@import "./poem.scss";
+@import "./partials/_colors";
+@import "./partials/_fonts";
+@import "./partials/_poem";
 
 body {
   @include outer-container;
+  background: $base03;
+  color: $textColor;
+  font-family: 'abel', cursive;
+}
+
+h1, h2, h3, h4, h5, h5 {
+  color: $headingsColor;
+}
+
+.poem-interface {
+  @include span-columns(6);
+  background: $bodyBackground;
 }

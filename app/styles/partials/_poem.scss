@@ -1,0 +1,13 @@
+.poem {
+  @include span-columns(8);
+  @include shift(2);
+  
+  .author {
+    text-align: right;
+    padding-right: 1em;
+  }
+  
+  span {
+    color: $red;
+  }
+}

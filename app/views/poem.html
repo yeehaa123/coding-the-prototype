@@ -4,13 +4,13 @@
 
   <div ng-hide="substituted">
     <div class="body" ng-repeat="line in poem.body"> 
-      <p>{{line}}</p>
+      <p ng-bind-html="line"></p>
     </div>
   </div>
 
   <div ng-show="substituted">
-    <div class="body" ng-repeat="line in poem.body_altered()"> 
-      <p>{{line}}</p>
+    <div class="body" ng-repeat="line in poem.body_altered(false)"> 
+      <p ng-bind-html="line"></p>
     </div>
   </div>
 

@@ -28,19 +28,22 @@
     }
   ]
 
-  alterPoem = (poem)->
+  alterPoem = (poem, substitute)->
     variables = poem.variables
     body = _.map poem.body, (line) ->
       _.each variables, (value, key) ->
         re = new RegExp(key)
-        line = line.replace re, value
+        if substitute
+          line = line.replace re, "<span>#{value}</span>"
+        else
+          line = line.replace re, "<span>#{key}</span>"
       line
     body
   
   getPoem = (id)->
     poem = poems[id]
-    poem.body_altered = ->
-      alterPoem(@)
+    poem.body_altered = (substitute) ->
+      alterPoem(@, substitute)
     poem
 
   getPoems = ->
